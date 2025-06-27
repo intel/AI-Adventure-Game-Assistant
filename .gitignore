@@ -1,0 +1,17 @@
+*.project
+*.cproject
+*.pydevproject
+*.settings
+*/gen/
+*.swp
+/config.xml
+
+# Python-specific
+*.?env*
+*.pyc
+__pycache__
+.py-build-cmake_cache
+*.egg-info
+models/*
+my_env/*
+run_env/*
