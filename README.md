@@ -58,13 +58,13 @@ _NOTE: If you are using Windows, you will probably need to install [Microsoft Vi
 To clone the repository, run the following command:
 
 ```shell
-git clone https://github.com/intel-sandbox/ai_tabletop_adventure_assistant
+git clone https://github.com/intel/AI-Adventure-Game-Assistant.git
 ```
 
-The above will clone the repository into a directory named "ai_tabletop_adventure_assistant" in the current directory. Then, navigate into the directory using the following command:
+The above will clone the repository into a directory named "AI-Adventure-Game-Assistant" in the current directory. Then, navigate into the directory using the following command:
 
 ```shell
-cd ai_tabletop_adventure_assistant
+cd AI-Adventure-Game-Assistant
 ```
 
 Next the below will create a virtual environment, activate the environment, and install the required dependencies for the setup and execution of the project.
@@ -79,7 +79,7 @@ pip install -r requirements.txt
 Windows:
 ```shell
 python -m venv run_env
-run_env/Scripts/activate
+run_env\Scripts\activate
 pip install -r requirements.txt
 ``` 
 
