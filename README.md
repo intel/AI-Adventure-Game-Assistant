@@ -1,15 +1,13 @@
 <div id="top" align="center">
-  <h1>AI Adventure Experience with OpenVINO™ GenAI</h1>
-  <h4>
-    <a href="https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/open-potential.html">🏠&nbsp;About&nbsp;the&nbsp;Kits&nbsp;·</a>
-  </h4>
+  <h1>AI Adventure Game Assistant</h1>
+
 </div>
 
 [![Apache License Version 2.0](https://img.shields.io/badge/license-Apache_2.0-green.svg)](https://github.com/openvinotoolkit/openvino_build_deploy/blob/master/LICENSE.txt)
 
-The kit integrates image creation with generative AI, voice activity detection (VAD), automatic speech recognition (ASR), large language models (LLMs), and natural language processing (NLP). A live voice transcription pipeline is connected to an LLM, which makes intelligent decisions about whether the user is describing the scene to an adventure game. When the LLM detects a new scene, the LLM will produce a detailed text prompt suitable for stable diffusion, which the application uses to illustrate the image. Utilizing the OpenVINO™ GenAI framework, this kit demonstrates the use of text2image, LLM pipeline, and whisper speech2text APIs.
+The project integrates image creation with generative AI, voice activity detection (VAD), automatic speech recognition (ASR), large language models (LLMs), and natural language processing (NLP). A live voice transcription pipeline is connected to an LLM, which makes intelligent decisions about whether the user is describing the scene to an adventure game. When the LLM detects a new scene, the LLM will produce a detailed text prompt suitable for stable diffusion, which the application uses to illustrate the image. Utilizing the OpenVINO™ GenAI framework, this kit demonstrates the use of text2image, LLM pipeline, and whisper speech2text APIs.
 
-This kit uses the following technology stack:
+This project uses the following technology stack:
 - [OpenVINO Toolkit](https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/overview.html) ([docs](https://docs.openvino.ai/))
 - [OpenVINO GenAI](https://github.com/openvinotoolkit/openvino.genai)
 - [Whisper](https://github.com/openai/whisper)
@@ -17,11 +15,11 @@ This kit uses the following technology stack:
 - [Single Image Super Resolution](https://arxiv.org/abs/1807.06779)
 - [Latent Consistency Models](https://arxiv.org/abs/2310.04378)
 
-Check out our [AI Reference Kits repository](/) for other kits.
+
 
 ![ai_adventure_experience_desert](https://github.com/user-attachments/assets/2144ae33-9e41-4e48-9992-ddec17ef5579)
 
-Contributors: Ryan Metcalfe, Garth Long, Arisha Kumar, Ria Cheruvu, Paula Ramos, Dmitriy Pastushenkov, Zhuo Wu, and Raymond Lo.
+Contributors: Ryan Metcalfe, Garth Long, Arisha Kumar
 
 ### What's New
 
