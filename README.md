@@ -126,17 +126,7 @@ You can test the intelligence of the LLM helper and say something not relevant t
 To interact with the 3D hoverable animation created with depth maps, start an HTTP server as explained above, and you will be able to interact with the parallax.
 
 ## :bulb: Additional Tips
-* Feel free to modify `main.py` to select different OpenVINO devices for the llm, stable diffusion pipeline, whisper, etc.
-  Look toward the bottom of the script, for a section that looks like this:
-  ```
-  if __name__ == "__main__":
-    app = QApplication(sys.argv)
 
-    llm_device = 'GPU'
-    sd_device = 'GPU'
-    whisper_device = 'CPU'
-    super_res_device = 'GPU'
-  ```
   If you're running on an Intel Core Ultra Series 2 laptop, and you want to set ```llm_device = 'NPU'```, be sure to have latest NPU driver installed, from [here](https://www.intel.com/content/www/us/en/download/794734/intel-npu-driver-windows.html)
   
 * Based on the resolution of your display, you may want to tweak the default resolution of the illustrated image, as well as caption font size.
