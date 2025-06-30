@@ -91,7 +91,7 @@ Next, you’ll download and optimize the required models via the running of a do
 
 To run the download script:
 ```shell
-python3 download_and_prepare_models.py
+python download_and_prepare_models.py
 cd ..
 ```
 ## Running the Application

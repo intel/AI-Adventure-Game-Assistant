@@ -42,14 +42,10 @@ class StableDiffusionWorker(AsyncWorker):
         worker_log = f"<b>SD: Loading Stable Diffusion to <span style=\"color: green;\">{self.sd_device}</span>...</b><br>"
         self.ui_update_queue.put(("worker_log", worker_log,))
         
-        if False:
-            sd_pipe = ov_genai.Text2ImagePipeline(r"models/LCM_Dreamshaper_v7/FP16")
-            sd_pipe.reshape(1, height, width, sd_pipe.get_generation_config().guidance_scale)
-            num_inference_steps = 5
-        else:
-            sd_pipe = ov_genai.Text2ImagePipeline(r"models/sdxl-turbo/FP16")
-            sd_pipe.reshape(1, height, width, 0) # sdxl uses guidance_scale=0
-            num_inference_steps = 3
+
+        sd_pipe = ov_genai.Text2ImagePipeline(r"models/sdxl-turbo/FP16")
+        sd_pipe.reshape(1, height, width, 0) # sdxl uses guidance_scale=0
+        num_inference_steps = 3
 
         sd_pipe.compile(self.sd_device)
         

@@ -1,12 +1,8 @@
 import os
-
-import subprocess #nosec 
+import subprocess
 import sys
 from pathlib import Path
 
-import openvino as ov
-import torch
-from huggingface_hub import hf_hub_download
 
 model_dir = os.path.dirname(os.path.abspath(__file__)) + "/models"
 
@@ -14,23 +10,14 @@ model_dir = os.path.dirname(os.path.abspath(__file__)) + "/models"
 Path(model_dir).mkdir(exist_ok=True)
 
 def prepare_llm_model():
-    if False:
-        if not Path(model_dir+"/qwen2.5-7b-instruct-awq").exists():
-            print("Qwen Model not downloaded.")
-            #cmd = "optimum-cli export openvino --model Qwen/Qwen2.5-7B-Instruct --task text-generation-with-past --weight-format int4 --group-size -1 --ratio 1.0 --sym "  + model_dir + "/qwen2.5-7b-instruct/INT4_compressed_weights"
-            cmd = "optimum-cli export openvino --model Qwen/Qwen2.5-7B-Instruct --task text-generation-with-past --weight-format int4 --group-size -1 --ratio 0.8 --awq --dataset wikitext2 --scale-estimation --sym --backup-precision int8_sym  "  + model_dir + "/qwen2.5-7b-instruct-awq/INT4_compressed_weights"
-            print("llm download command:",cmd)
-            os.system(cmd)
-        else:
-            print("Qwen Model already downloaded.")
+    if not Path(model_dir+"/llama-3.1-8b-instruct-awq").exists():
+        print("llama Model not downloaded.")
+        cmd = "optimum-cli export openvino --model meta-llama/Llama-3.1-8B-Instruct --task text-generation-with-past --weight-format int4 --group-size -1 --ratio 0.8 --awq --dataset wikitext2 --scale-estimation --sym --backup-precision int8_sym  "  + model_dir + "/llama-3.1-8b-instruct-awq/INT4_compressed_weights"
+        print("llm download command:",cmd)
+        os.system(cmd)
     else:
-        if not Path(model_dir+"/llama-3.1-8b-instruct-awq").exists():
-            print("llama Model not downloaded.")
-            cmd = "optimum-cli export openvino --model meta-llama/Llama-3.1-8B-Instruct --task text-generation-with-past --weight-format int4 --group-size -1 --ratio 0.8 --awq --dataset wikitext2 --scale-estimation --sym --backup-precision int8_sym  "  + model_dir + "/llama-3.1-8b-instruct-awq/INT4_compressed_weights"
-            print("llm download command:",cmd)
-            os.system(cmd)
-        else:
-            print("llama Model already downloaded.")
+        print("llama Model already downloaded.")
+
 
 
 def prepare_stable_diffusion_model():
@@ -45,13 +32,8 @@ def prepare_stable_diffusion_model():
 def download_file(url: str, path: Path) -> None:
     """Download file."""
     import urllib.request
-    
     path.parent.mkdir(parents=True, exist_ok=True)
-    if url.lower().startswith('http'):   
-        #We are manually validating that urllib only opens urls with "http" hence adding this skip for urllib to supress warning from bandit scan
-        urllib.request.urlretrieve(url, path) #nosec
-    else:
-        raise ValueError from None
+    urllib.request.urlretrieve(url, path)
 
 
 def prepare_voice_activity_detection_model():
@@ -120,5 +102,6 @@ if __name__ == "__main__":
     prepare_voice_activity_detection_model()
     prepare_super_res()
     prepare_whisper()
+ 
 
 
