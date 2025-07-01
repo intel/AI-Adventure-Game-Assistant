@@ -20,7 +20,6 @@ from PySide6.QtWidgets import (
     QHBoxLayout, QGridLayout, QProgressBar, QTextEdit, QLineEdit
 )
 from PySide6.QtWidgets import QLabel
-from torchvision.transforms import Compose
 
 from vad_whisper_workers import VADWorker, WhisperWorker
 from stable_diffusion_worker import StableDiffusionWorker
@@ -228,6 +227,9 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("AI Adventure Experience")
         self.resize(800, 600)
         
+        # Make sure this line stays *before* we start the various workers.
+        self.num_workers_ready = 0
+
         from multiprocessing import Queue
         self.ui_update_queue = Queue()
         
@@ -242,7 +244,7 @@ class MainWindow(QMainWindow):
         self.llm_worker.caption_updated.connect(self.update_caption)
         self.llm_worker.progress_updated.connect(self.update_progress)
         self.llm_worker.reasoning_updated.connect(self.update_reasoning)
-        self.llm_worker.ready.connect(self.update_enable_start_button)
+        self.llm_worker.ready.connect(self.worker_ready)
         
         self.img_update_worker = ImageUpdateThread(self.sd_prompt_queue, self.app_params, self.ui_update_queue)
         self.img_update_worker.primary_pixmap_updated.connect(self.update_primary_pixmap)
@@ -279,9 +281,13 @@ class MainWindow(QMainWindow):
         else:
             self.theme_input.show()
 
-    def update_enable_start_button(self, int):
-        self.start_button.setEnabled(True)
-        self.image_label.setText("**Okay, Ready!**  \n Click the *Start* button to set out on your adventure!  \n🧭")
+    def worker_ready(self, int):
+        self.num_workers_ready += 1
+        # wait for 3 workers to be ready (stable-diffusion, whisper, LLM)
+        if( self.num_workers_ready == 3 ):
+            self.update_progress(0, "Ready")
+            self.start_button.setEnabled(True)
+            self.image_label.setText("**Okay, Ready!**  \n Click the *Start* button to set out on your adventure!  \n🧭")
         
     def update_primary_pixmap(self, pixmap):
         self.primary_pixmap = pixmap

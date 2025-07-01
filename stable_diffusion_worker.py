@@ -62,6 +62,7 @@ class StableDiffusionWorker(AsyncWorker):
                                                                   
         worker_log = f"<b>SR: Loading Super Resolution to <span style=\"color: green;\">{self.super_res_device}</span>... [DONE]</b><br>"
         self.ui_update_queue.put(("worker_log", worker_log,))
+        self.ui_update_queue.put(("ready", 1,))
 
         while self._running.value:
             try:

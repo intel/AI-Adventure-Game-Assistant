@@ -149,6 +149,7 @@ class WhisperWorker(AsyncWorker):
         whisper_config.return_timestamps = False
         worker_log = f"<b>ASR: Loading Whisper to <span style=\"color: green;\">{self.device}</span>... [DONE]</b><br>"
         self.ui_update_queue.put(("worker_log", worker_log,))
+        self.ui_update_queue.put(("ready", 1,))
         print("done creating whisper LLM")
         
         while self._running.value:

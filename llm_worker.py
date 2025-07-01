@@ -50,9 +50,7 @@ class LLMWorker(AsyncWorker):
 
         transcription_history = []
         TRANSCRIPT_CONTEXT_DURATION_SECS = 30
-
         self.ui_update_queue.put(("ready", 1,))
-        self.ui_update_queue.put(("progress", "Ready",))
         while self._running.value:
             try:
                 #self.progress_updated.emit(0, "listening")
