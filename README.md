@@ -97,6 +97,8 @@ To use the Llama model, you need to have a HuggingFace account and generate a to
 
 To run the download script:
 ```shell
+huggingface-cli login 
+# paste the token when prompted.
 python download_and_prepare_models.py
 cd ..
 ```
