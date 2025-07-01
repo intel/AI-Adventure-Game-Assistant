@@ -89,6 +89,12 @@ Next, you’ll download and optimize the required models via the running of a do
 - Latent Consistency Models: Image generation
 - Super Resolution: Increase the resolution of the generated image
 
+To use the Llama model, you need to have a HuggingFace account and generate a token for logging in on the command line.
+1. Create an account on  [HuggingFace.co](https://huggingface.co)
+2. Create an access token by going to [Settings > Access Tokens](https://huggingface.co/settings/tokens) and clicking +Create new token 
+3. Select Token Type as `Read` and give a name
+4. Copy the generated token, being sure to save it somewhere for later, if needed. 
+
 To run the download script:
 ```shell
 python download_and_prepare_models.py
