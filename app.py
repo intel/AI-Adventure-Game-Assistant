@@ -147,7 +147,7 @@ class MainWindow(QMainWindow):
         self.image_label.setStyleSheet("font-size: 48pt;")
         self.image_label.setFont(QFont("Arial", 24))
         self.image_label.setWordWrap(True)  # Enable word wrapping
-        self.image_label.setText("**Greetings!**  \n Patience, traveler. We’re setting up your AI companion for the path ahead...  \n🧙‍♂️")
+        self.image_label.setText("**Greetings!**  \n Patience, traveler. We’re setting up your AI companion for the path ahead...  \n🧙")
         
         #self.image_label.setFixedSize(1280, 720)
         image_height = 684
