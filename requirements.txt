@@ -17,7 +17,7 @@ nncf
 accelerate
 huggingface_hub
 opencv-python==4.11.0.86
-pillow==11.1.0
+pillow==12.1.1
 #openvino GenAI (which also installs openvino packages)
 openvino-genai==2025.2.0.0
 # for VAD
